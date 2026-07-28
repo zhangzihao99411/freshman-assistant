@@ -2634,16 +2634,23 @@ function toggleTheme() {
   });
 })();
 
-// ========== Page Load Transition ==========
-window.addEventListener('load', function() {
-  setTimeout(function() {
-    var loader = document.getElementById('pageLoader');
-    if (loader) {
-      loader.classList.add('hide');
-      setTimeout(function() { loader.remove(); }, 500);
+// Page loader removed
+
+// Fallback: ensure all scroll-reveal elements become visible after 2 seconds
+setTimeout(function() {
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+    if (!el.classList.contains('visible')) {
+      el.classList.add('visible');
     }
-  }, 600);
-});
+  });
+}, 2000);
+
+// Also make elements visible immediately if IntersectionObserver is not supported
+if (typeof IntersectionObserver === 'undefined') {
+  document.querySelectorAll('.scroll-reveal').forEach(function(el) {
+    el.classList.add('visible');
+  });
+}
 
 </script>
 
