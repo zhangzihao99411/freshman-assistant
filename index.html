@@ -468,6 +468,9 @@
     .card-item:nth-child(3)::before { background: linear-gradient(135deg, #f59e0b, #fbbf24); }
     .card-item:nth-child(4)::before { background: linear-gradient(135deg, #ec4899, #f472b6); }
     .card-item:nth-child(5)::before { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+    .card-item:nth-child(6)::before { background: linear-gradient(135deg, #eab308, #facc15); }
+    .card-item:nth-child(7)::before { background: linear-gradient(135deg, #06b6d4, #22d3ee); }
+    .card-item:nth-child(8)::before { background: linear-gradient(135deg, #84cc16, #a3e635); }
 
     /* Shimmer sweep */
     .card-item::after {
@@ -531,6 +534,19 @@
       background: linear-gradient(135deg, #cffafe, #a5f3fc);
       box-shadow: 0 4px 12px rgba(6,182,212,0.15);
     }
+    .card-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      z-index: 2;
+    }
+    .card-icon.lime {
+      background: linear-gradient(135deg, #ecfccb, #d9f99d);
+      box-shadow: 0 4px 12px rgba(132,204,22,0.15);
+    }
 
     /* Icon bounce on tap */
     .card-item:active .card-icon {
@@ -562,6 +578,8 @@
     [data-theme="dark"] .card-icon.purple { background: linear-gradient(135deg, #2e1065, #4c1d95); }
     [data-theme="dark"] .card-icon.pink   { background: linear-gradient(135deg, #500724, #831843); }
     [data-theme="dark"] .card-icon.cyan   { background: linear-gradient(135deg, #164e63, #155e75); }
+    [data-theme="dark"] .card-icon.yellow { background: linear-gradient(135deg, #422006, #713f12); }
+    [data-theme="dark"] .card-icon.lime   { background: linear-gradient(135deg, #1a2e05, #365314); }
 
     /* ========== Question Cards (2-column) ========== */
     .question-grid {
@@ -1025,23 +1043,9 @@
     }
 
     /* ========== Page Load Transition ========== */
-    .page-loader {
-      position: fixed;
-      inset: 0;
-      background: #fffbf5;
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 16px;
-      transition: opacity 0.5s ease;
-    }
-    .page-loader.hide {
-      opacity: 0;
-      pointer-events: none;
-    }
-    [data-theme="dark"] .page-loader { background: #1a1a2e; }
+    
+    
+    [data-theme="dark"] 
     .loader-spinner {
       width: 40px; height: 40px;
       border: 3px solid #1a1a2e;
@@ -1050,7 +1054,7 @@
       animation: spin 0.8s linear infinite;
     }
     @keyframes spin { to { transform: rotate(360deg); } }
-    .loader-text { font-size: 14px; color: #78716c; }
+    
 
 
 
@@ -1181,8 +1185,7 @@
       content: '';
       animation: loaderDots 1.5s steps(3, end) infinite;
     }
-    @keyframes loaderDots {
-      0% { content: ''; }
+    
       33% { content: '.'; }
       66% { content: '..'; }
       100% { content: '...'; }
@@ -1523,7 +1526,162 @@
         radial-gradient(circle, rgba(255,255,255,0.04) 1px, transparent 1px);
     }
 
-  </style>
+  
+    /* ========== Enhanced Body Atmosphere ========== */
+    body {
+      background:
+        radial-gradient(circle, rgba(249,115,22,0.04) 1px, transparent 1px),
+        linear-gradient(180deg, #fffbf5 0%, #fff9f0 40%, #fffbf5 100%);
+      background-size: 20px 20px, 100% 100%;
+    }
+
+    /* Floating ambient particles */
+    @keyframes floatParticle {
+      0%, 100% { transform: translateY(0) translateX(0) scale(1); opacity: 0.3; }
+      25% { transform: translateY(-30px) translateX(10px) scale(1.1); opacity: 0.5; }
+      50% { transform: translateY(-15px) translateX(-8px) scale(0.9); opacity: 0.4; }
+      75% { transform: translateY(-40px) translateX(5px) scale(1.05); opacity: 0.35; }
+    }
+
+    /* ========== Enhanced Header ========== */
+    .header {
+      padding: 28px 16px 24px;
+      background: linear-gradient(135deg, #c2410c 0%, #ea580c 20%, #f97316 40%, #fb923c 65%, #f59e0b 100%);
+      background-size: 300% 300%;
+    }
+
+    .header-logo {
+      width: 56px; height: 56px;
+      font-size: 28px;
+      background: rgba(255,255,255,0.18);
+      box-shadow:
+        0 6px 20px rgba(0,0,0,0.12),
+        inset 0 1px 0 rgba(255,255,255,0.25),
+        0 0 0 2px rgba(255,255,255,0.08);
+    }
+    .header-logo::after {
+      inset: -4px;
+      border-radius: 18px;
+      border: 2px solid rgba(255,255,255,0.12);
+    }
+
+    .header-info h1 {
+      font-size: 20px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.15);
+      letter-spacing: 0.8px;
+    }
+    .header-info p {
+      font-size: 12.5px;
+      opacity: 0.85;
+    }
+
+    /* Enhanced header wave */
+    .header-wave {
+      height: 28px;
+    }
+    .header-wave svg {
+      height: 28px;
+    }
+
+    /* ========== Enhanced Banner ========== */
+    .banner {
+      height: 190px;
+      border-radius: 0 0 20px 20px;
+      overflow: hidden;
+    }
+    .banner-bg {
+      background: linear-gradient(180deg, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.5) 100%);
+    }
+    .banner-title {
+      font-size: 26px;
+      letter-spacing: 1.5px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.35);
+    }
+    .banner-subtitle {
+      font-size: 13px;
+      opacity: 0.9;
+    }
+    .banner-btn {
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+    }
+    .banner-btn:active {
+      transform: scale(0.92);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+    }
+
+    /* ========== Enhanced Info Card ========== */
+    .info-card {
+      margin: -12px 16px 16px;
+      border-radius: 18px;
+      padding: 20px 16px;
+      box-shadow: 0 8px 30px rgba(249,115,22,0.1), 0 2px 8px rgba(0,0,0,0.04);
+      border: 1px solid rgba(254,215,170,0.6);
+    }
+
+    /* ========== Enhanced Section Titles ========== */
+    .section-title {
+      font-size: 17px;
+      font-weight: 800;
+      padding: 24px 16px 16px;
+      letter-spacing: 0.5px;
+    }
+    .section-title::before {
+      width: 4px;
+      height: 20px;
+      border-radius: 2px;
+      background: linear-gradient(180deg, #f97316, #fb923c);
+      box-shadow: 0 0 8px rgba(249,115,22,0.25);
+    }
+
+    /* ========== Scrollbar Styling ========== */
+    ::-webkit-scrollbar { width: 4px; height: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(249,115,22,0.2); border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(249,115,22,0.35); }
+
+    /* ========== Enhanced Footer ========== */
+    .disclaimer {
+      text-align: center;
+      font-size: 11px;
+      color: #a8a29e;
+      padding: 12px 20px;
+      border-top: 1px solid rgba(240,224,208,0.5);
+      margin: 8px 16px 0;
+      position: relative;
+    }
+    .disclaimer::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 20%; right: 20%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.15), transparent);
+    }
+
+    /* ========== Subtle Page Transitions ========== */
+    .card-grid, .question-grid, .chat-section, .info-card, .banner {
+      animation: sectionFadeIn 0.6s ease both;
+    }
+    @keyframes sectionFadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== Dark mode enhancements ========== */
+    [data-theme="dark"] body {
+      background:
+        radial-gradient(circle, rgba(249,115,22,0.03) 1px, transparent 1px),
+        linear-gradient(180deg, #0c0a09 0%, #1a1612 40%, #0c0a09 100%);
+      background-size: 20px 20px, 100% 100%;
+    }
+    [data-theme="dark"] .header {
+      background: linear-gradient(135deg, #7c2d12 0%, #9a3412 20%, #c2410c 40%, #ea580c 65%, #f97316 100%);
+      background-size: 300% 300%;
+    }
+    [data-theme="dark"] .disclaimer::before {
+      background: linear-gradient(90deg, transparent, rgba(249,115,22,0.1), transparent);
+    }
+</style>
 </head>
 <body>
 
@@ -1601,12 +1759,14 @@
   <!-- Header -->
 
   <!-- Page Loader -->
-  <div class="page-loader" id="pageLoader">
-    <div class="loader-emoji">🎓</div>
-    <div class="loader-text">123学长加载中<span class="loader-dots"></span></div>
-  </div>
+  
 
   <div class="header">
+    <div style="position:absolute;width:6px;height:6px;background:rgba(255,255,255,0.15);border-radius:50%;top:20%;left:15%;animation:floatParticle 8s ease-in-out infinite;pointer-events:none;"></div>
+    <div style="position:absolute;width:4px;height:4px;background:rgba(255,255,255,0.1);border-radius:50%;top:60%;left:75%;animation:floatParticle 10s ease-in-out 2s infinite;pointer-events:none;"></div>
+    <div style="position:absolute;width:5px;height:5px;background:rgba(255,255,255,0.12);border-radius:50%;top:35%;left:55%;animation:floatParticle 12s ease-in-out 4s infinite;pointer-events:none;"></div>
+    <div style="position:absolute;width:3px;height:3px;background:rgba(255,255,255,0.08);border-radius:50%;top:70%;left:30%;animation:floatParticle 9s ease-in-out 1s infinite;pointer-events:none;"></div>
+    <div style="position:absolute;width:7px;height:7px;background:rgba(255,255,255,0.06);border-radius:50%;top:15%;left:80%;animation:floatParticle 11s ease-in-out 3s infinite;pointer-events:none;"></div>
     <div class="header-mesh"></div>
     <div class="header-ring"></div>
     <div class="header-ring-inner"></div>
@@ -1664,24 +1824,31 @@
   <div class="section-title scroll-reveal">快捷入口</div>
   <div class="card-grid">
     <div class="card-item scroll-reveal" style="--i:0" onclick="showModal('freshman-group')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#3b82f6,#60a5fa);box-shadow:0 0 6px rgba(59,130,246,0.4);"></div>
       <div class="card-icon blue">👥</div>
       <div class="card-name">新生群</div>
+      <div class="card-desc">加入交流</div>
     </div>
     <div class="card-item scroll-reveal" style="--i:1" onclick="showModal('contact-senior')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#22c55e,#4ade80);box-shadow:0 0 6px rgba(34,197,94,0.4);"></div>
       <div class="card-icon green">💬</div>
       <div class="card-name">学长微信</div>
       <div class="card-desc">扫描咨询</div>
     </div>
     <div class="card-item scroll-reveal" style="--i:2" onclick="showModal('dormitory')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#f97316,#fb923c);box-shadow:0 0 6px rgba(249,115,22,0.4);"></div>
       <div class="card-icon orange">🛏️</div>
       <div class="card-name">宿舍环境</div>
+      <div class="card-desc">实景照片</div>
     </div>
     <div class="card-item scroll-reveal" style="--i:3" onclick="showModal('campus-map')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#a855f7,#c084fc);box-shadow:0 0 6px rgba(168,85,247,0.4);"></div>
       <div class="card-icon purple">🗺️</div>
       <div class="card-name">学校地图</div>
       <div class="card-desc">点击查看</div>
     </div>
     <div class="card-item scroll-reveal" style="--i:4" onclick="showModal('campus-photos')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#ec4899,#f472b6);box-shadow:0 0 6px rgba(236,72,153,0.4);"></div>
       <div class="card-icon pink">📷</div>
       <div class="card-name">学校实景</div>
       <div class="card-desc">校园风光</div>
@@ -1691,6 +1858,18 @@
       <div class="card-icon yellow">🎒</div>
       <div class="card-name">开学必备</div>
       <div class="card-desc">行李清单</div>
+    </div>
+    <div class="card-item scroll-reveal" style="--i:6" onclick="showModal('campus-card')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#06b6d4,#22d3ee);box-shadow:0 0 6px rgba(6,182,212,0.4);"></div>
+      <div class="card-icon cyan">📱</div>
+      <div class="card-name">电话卡</div>
+      <div class="card-desc">办卡攻略</div>
+    </div>
+    <div class="card-item scroll-reveal" style="--i:7" onclick="showModal('bedding')">
+      <div class="card-badge" style="background:linear-gradient(135deg,#84cc16,#a3e635);box-shadow:0 0 6px rgba(132,204,22,0.4);"></div>
+      <div class="card-icon lime">🛌</div>
+      <div class="card-name">被褥</div>
+      <div class="card-desc">规格选购</div>
     </div>
   </div>
 
@@ -2094,7 +2273,82 @@ const modalData = {
         <span style="color:#d6d3d1;">标签说明：<span style="color:#2563eb;">蓝色</span>=必备 · <span style="color:#dc2626;">红色</span>=重点 · <span style="color:#16a34a;">绿色</span>=推荐</span>
       </div>
     `
-  }
+  },
+'campus-card': {
+  title: '📱 校园电话卡攻略',
+  body: `
+    <div style="background:#f0f9ff;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#0369a1;margin-bottom:8px;">📋 办卡方式</div>
+      <div style="color:#334155;line-height:1.8;">
+        强烈推荐<strong>线上办理</strong>！<br>
+        • 线上办理比线下便宜，套餐更优惠<br>
+        • 开学前在网上申请，卡到后激活直接使用<br>
+        • 线下办理价格较高，且可选套餐少
+      </div>
+    </div>
+    <div style="background:#fef3c7;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#b45309;margin-bottom:8px;">💰 充值方式</div>
+      <div style="color:#334155;line-height:1.8;">
+        使用<strong>中国电信APP</strong>线上充值，随时随地操作，不用排队。支持微信、支付宝等多种支付方式。
+      </div>
+    </div>
+    <div style="background:#dbeafe;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#1d4ed8;margin-bottom:8px;">🎯 校园卡优势</div>
+      <div style="color:#334155;line-height:1.8;">
+        • <strong>大流量卡：</strong>每月超大流量，刷视频、上网课都不慌<br>
+        • <strong>校园网连接：</strong>可连接校园WiFi，宿舍教学楼全覆盖<br>
+        • <strong>线上福利多：</strong>后期赠送视频会员等优惠
+      </div>
+    </div>
+    <div style="background:#fce7f3;border-radius:12px;padding:14px;">
+      <div style="font-weight:bold;color:#be185d;margin-bottom:8px;">⚠️ 线上办理注意事项</div>
+      <div style="color:#334155;line-height:1.8;">
+        1. 准备好身份证正反面照片<br>
+        2. 填写准确的收件地址（学校地址或家庭地址）<br>
+        3. 收到卡后按说明激活，需本人实名认证<br>
+        4. 激活前不要插卡，先完成线上认证流程
+      </div>
+    </div>
+  `
+},
+'bedding': {
+  title: '🛌 被褥选购指南',
+  body: `
+    <div style="background:#f0fdf4;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#15803d;margin-bottom:8px;">📏 宿舍床铺尺寸</div>
+      <div style="color:#334155;line-height:1.8;">
+        宿舍床铺规格：<strong>0.9m × 1.9m</strong>（上铺下桌），建议按此尺寸选购床垫和床单。
+      </div>
+    </div>
+    <div style="background:#fef3c7;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#b45309;margin-bottom:8px;">🛒 必备被褥清单</div>
+      <div style="color:#334155;line-height:1.8;">
+        1. <strong>床垫：</strong>0.9m×1.9m，厚度3-5cm（乳胶或棕榈）<br>
+        2. <strong>床单：</strong>1.2m×2.0m（建议备2条换洗）<br>
+        3. <strong>被芯：</strong>1.5m×2.0m（秋冬用）<br>
+        4. <strong>被套：</strong>1.5m×2.0m（建议备2套）<br>
+        5. <strong>枕芯+枕套：</strong>标准枕头尺寸<br>
+        6. <strong>凉席：</strong>0.9m×1.9m（夏季用）
+      </div>
+    </div>
+    <div style="background:#dbeafe;border-radius:12px;padding:14px;margin-bottom:16px;">
+      <div style="font-weight:bold;color:#1d4ed8;margin-bottom:8px;">💡 选购建议</div>
+      <div style="color:#334155;line-height:1.8;">
+        • 学校超市有售"宿舍大礼包"（含被褥枕头），约300-400元，方便但质量一般<br>
+        • 自备更划算，开学前网购或在家购买，快递到学校<br>
+        • 建议备一条薄毯，春秋换季时盖
+      </div>
+    </div>
+    <div style="background:#fce7f3;border-radius:12px;padding:14px;">
+      <div style="font-weight:bold;color:#be185d;margin-bottom:8px;">📦 邮寄地址</div>
+      <div style="color:#334155;line-height:1.8;">
+        山西省太原市万柏林区南内环西街16号 山西财政税务专科学校<br>
+        邮编：030024<br>
+        <strong>提示：</strong>快递开学前3天寄出，到校后到菜鸟驿站领取。
+      </div>
+    </div>
+  `
+},
 };
 
 function showModal(key) {
@@ -2393,5 +2647,9 @@ window.addEventListener('load', function() {
 
 </script>
 
+    </div>
+  </div>
+    </div>
+  </div>
 </body>
 </html>
